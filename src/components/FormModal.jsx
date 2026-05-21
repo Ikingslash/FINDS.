@@ -72,14 +72,14 @@ function FormModal({ setModalOpen, onAddFind, username }) {
                   Username
                 </label>
                 <input
-                  ref={inputRef} // Automatically focuses here on landing page!
+                  ref={inputRef}
                   type="text"
                   name="username"
                   value={formData.username}
                   onChange={(e) =>
                     setFormData({ ...formData, username: e.target.value })
                   }
-                  required={!username} // Only required if we don't have a username yet
+                  required={!username}
                   className="w-full border border-gray-300 rounded-lg p-3 outline-none focus:border-green-600"
                   placeholder="Enter your name..."
                 />

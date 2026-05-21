@@ -14,9 +14,9 @@ function HomePage({ setModalOpen, items = [], view, setView, username }) {
 
   const dynamicCategories = Object.keys(categoriesMap);
   return (
-    <>
-      <div className="min-h-screen w-full flex flex-col bg-gray-50">
-        <nav className="flex items-center w-full px-4 py-6">
+    <div>
+      <div className="min-h-screen w-full flex flex-col bg-gradient-to-r from-[#EAF7EE] via-white to-[#F4F9F5]">
+        <nav className="flex items-center w-full px-4 py-6 ">
           <div className="flex-1">
             <h1
               className="text-2xl font-bold text-green-600 cursor-pointer"
@@ -38,7 +38,6 @@ function HomePage({ setModalOpen, items = [], view, setView, username }) {
             </a>
 
             <div className="hidden md:block">
-              {/* Added flex here so search form and button align perfectly when button shows up */}
               <div className="flex items-center gap-4">
                 <form className="max-w-md mx-auto">
                   <label
@@ -62,6 +61,7 @@ function HomePage({ setModalOpen, items = [], view, setView, username }) {
                         <path
                           stroke="currentColor"
                           strokeLinecap="round"
+                          strokeLinejoin="round"
                           strokeWidth="2"
                           d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"
                         />
@@ -76,8 +76,6 @@ function HomePage({ setModalOpen, items = [], view, setView, username }) {
                     />
                   </div>
                 </form>
-
-                {/* === FIXED: This physical button now ONLY appears on the feed page layout! === */}
                 {view === "feed" && (
                   <button
                     onClick={() => setModalOpen(true)}
@@ -92,7 +90,7 @@ function HomePage({ setModalOpen, items = [], view, setView, username }) {
           </div>
         </nav>
 
-        <main className="flex-1 w-full flex flex-col justify-center items-center text-center">
+        <main className="flex-1 w-full flex flex-col justify-start  ">
           {view === "home" && (
             <div className="my-auto py-20 flex flex-col items-center">
               <h1
@@ -117,41 +115,54 @@ function HomePage({ setModalOpen, items = [], view, setView, username }) {
             </div>
           )}
 
+          {/* FIX: Wrapped inside fragment <> ... </> to allow both block components to render concurrently */}
           {view === "feed" && (
-            <div className="w-full space-y-12 text-left px-8 py-6">
-              {dynamicCategories.length === 0 ? (
-                <p className="text-center text-gray-400 italic py-12">
-                  Your feed is empty. Add a find to get started!
-                </p>
-              ) : (
-                dynamicCategories.map((categoryName) => (
-                  <div key={categoryName} className="w-full">
-                    <h3 className="text-3xl font-bold text-gray-900 mb-4">
-                      {categoryName}
-                    </h3>
-                    <div className="flex gap-6 overflow-x-auto pb-4">
-                      {categoriesMap[categoryName].map((item) => (
-                        <div
-                          key={item.id}
-                          className="flex-none w-72 bg-white border border-gray-200 rounded-xl p-6 shadow-xs hover:border-green-500 transition-all"
-                        >
-                          <h4 className="text-xl font-bold text-gray-800 mb-2 truncate">
-                            {item.title}
-                          </h4>
-                          <p className="text-gray-500 text-sm line-clamp-3">
-                            {item.description}
-                          </p>
-                        </div>
-                      ))}
+            <>
+              <div className="w-full flex flex-col gap-y-6 text-left px-8 py-4">
+                {dynamicCategories.length === 0 ? (
+                  <p className="text-center text-gray-400 italic py-12">
+                    Your feed is empty. Add a find to get started!
+                  </p>
+                ) : (
+                  dynamicCategories.map((categoryName) => (
+                    <div key={categoryName} className="w-full">
+                      <h3 className="text-3xl font-bold text-gray-900 mb-4">
+                        {categoryName}
+                      </h3>
+                      <div className="flex gap-6 overflow-x-auto pb-4">
+                        {categoriesMap[categoryName].map((item) => (
+                          <div
+                            key={item.id}
+                            className="flex-none w-72 bg-white border border-gray-200 rounded-xl p-6 shadow-xs hover:border-green-500 transition-all"
+                          >
+                            <h4 className="text-xl font-bold text-gray-800 mb-2 truncate">
+                              {item.title}
+                            </h4>
+                            <p className="text-gray-500 text-sm line-clamp-3">
+                              {item.description}
+                            </p>
+                          </div>
+                        ))}
+                      </div>
                     </div>
-                  </div>
-                ))
-              )}
-            </div>
+                  ))
+                )}
+              </div>
+
+              {/* Added pointer-events-none to container and pointer-events-auto to button */}
+              <div className="md:hidden fixed bottom-6 left-0 right-0 z-40 flex justify-center pointer-events-none">
+                <button
+                  onClick={() => setModalOpen(true)}
+                  className="px-5 py-3 bg-green-600 text-white font-semibold rounded-lg shadow-xs hover:bg-green-700 pointer-events-auto"
+                >
+                  <div className="text-2xl">+</div>
+                </button>
+              </div>
+            </>
           )}
         </main>
       </div>
-    </>
+    </div>
   );
 }
 
