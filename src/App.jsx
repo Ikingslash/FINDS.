@@ -33,7 +33,7 @@ function App() {
           setModalOpen={setModalOpen}
           items={items}
           view={view}
-          setview={setView}
+          setView={setView}
           username={username}
         />
         {modalOpen && (

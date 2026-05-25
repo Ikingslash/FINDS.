@@ -1,58 +1,46 @@
-function HamburgerModal({ setMenuOpen }) {
+function HamburgerModal({ setMenuOpen, view, setView }) {
     return (
-        <div className="md:hidden fixed inset-0 bg-white z-50">
-            <button
-                onClick={() => setMenuOpen(false)}
-                className="absolute top-6 right-6 text-3xl text-gray-700 "
-            >
-                ✕
-            </button>
-            <div className="flex flex-col pt-20 px-6 gap-6 text-xl" style={{ fontFamily: "'OpenRunde', sans-serif" }}>
-                <form className="w-full">
-                    <label
-                        htmlFor="search"
-                        className="block mb-2.5 text-sm font-medium text-heading sr-only"
-                    >
-                        Search
-                    </label>
+        <div className="fixed inset-0 bg-white z-50 flex flex-col p-6 animate-fade-in md:hidden">
+            {/* Top row container carrying mobile dismiss button */}
+            <div className="flex justify-end items-center w-full mb-8">
+                <button
+                    onClick={() => setMenuOpen(false)}
+                    className="text-3xl font-semibold text-gray-500 p-2 cursor-pointer"
+                    aria-label="Close menu"
+                >
+                    ✕
+                </button>
+            </div>
 
-                    <div className="relative">
-                        <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                            <svg
-                                className="w-4 h-4 text-body"
-                                aria-hidden="true"
-                                xmlns="http://www.w3.org/2000/svg"
-                                width="24"
-                                height="24"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                            >
-                                <path
-                                    stroke="currentColor"
-                                    strokeLinecap="round"
-                                    strokeWidth="2"
-                                    d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"
-                                />
-                            </svg>
-                        </div>
-
-                        <input
-                            type="search"
-                            id="search"
-                            className="block w-full p-3 ps-9 bg-neutral-secondary-medium border text-heading text-sm rounded-lg shadow-xs placeholder:text-body outline-none focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-green-600 focus-visible:ring-green-600"
-                            required
-                        />
-                    </div>
-                </form>
-
-                <div className="py-3 hover:bg-gray-50 cursor-pointer text-gray-700">
+            {/* 🎯 MOBILE FEEDS TAB TOGGLE LINKS (Triggers view mutations natively) */}
+            <div className="flex flex-col gap-y-6 text-center mt-12">
+                <button
+                    onClick={() => {
+                        setView("home");
+                        setMenuOpen(false);
+                    }}
+                    className={`text-2xl font-bold transition-all p-3 rounded-xl cursor-pointer ${view === "home"
+                            ? "text-green-600 bg-green-50"
+                            : "text-gray-600 hover:text-black"
+                        }`}
+                    style={{ fontFamily: "'OpenRunde', sans-serif" }}
+                >
                     Home
-                </div>
+                </button>
 
-                <div className="py-3 hover:bg-gray-50 cursor-pointer text-gray-700">
-                    About
-                </div>
-
+                <button
+                    onClick={() => {
+                        setView("feed");
+                        setMenuOpen(false);
+                    }}
+                    className={`text-2xl font-bold transition-all p-3 rounded-xl cursor-pointer ${view === "feed"
+                            ? "text-green-600 bg-green-50"
+                            : "text-gray-600 hover:text-black"
+                        }`}
+                    style={{ fontFamily: "'OpenRunde', sans-serif" }}
+                >
+                    Feed
+                </button>
             </div>
         </div>
     );
