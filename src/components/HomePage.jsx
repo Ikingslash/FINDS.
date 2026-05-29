@@ -1,10 +1,10 @@
 import { useState } from "react";
 import HamburgerModal from "./HamburgerModal";
 
-function HomePage({ setModalOpen, items = [], view, setView, username }) {
+function HomePage({ setModalOpen, items = [], view, setView, username, onDeleteFind }) {
   const [menuOpen, setMenuOpen] = useState(false);
 
-  // Grouping items dynamically by their category type
+
   const categoriesMap = items.reduce((groups, item) => {
     const categoryName = item.type || "Other";
     if (!groups[categoryName]) {
@@ -134,11 +134,22 @@ function HomePage({ setModalOpen, items = [], view, setView, username }) {
                             >
                               <div className="w-full max-h-96 rounded-xl overflow-hidden relative bg-gray-50 flex items-center justify-center">
                                 <img
-                                  src={item.image || "https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=500&auto=format&fit=crop&q=60"}
+                                  src={item.image}
                                   alt={item.title}
                                   className="w-full h-auto object-contain group-hover:scale-101 transition-transform duration-300 rounded-xl"
-                                  loading="lazy"
                                 />
+
+                                <button
+                                  onClick={() => {
+                                    if (confirm("Do you want to delete this find?")) {
+                                      onDeleteFind(item.id);
+                                    }
+                                  }}
+                                  className="absolute top-3 right-3 bg-black/60 text-white rounded-full w-8 h-8 flex items-center justify-center text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity duration-200 cursor-pointer backdrop-blur-xs hover:bg-red-600"
+                                  title="Delete Find"
+                                >
+                                  •••
+                                </button>
                               </div>
 
                               <h4 className="text-lg font-bold text-gray-900 truncate w-full px-2 mt-1">

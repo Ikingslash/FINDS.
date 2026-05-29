@@ -1,7 +1,6 @@
 function HamburgerModal({ setMenuOpen, view, setView }) {
     return (
         <div className="fixed inset-0 bg-white z-50 flex flex-col p-6 animate-fade-in md:hidden">
-            {/* Top row container carrying mobile dismiss button */}
             <div className="flex justify-end items-center w-full mb-8">
                 <button
                     onClick={() => setMenuOpen(false)}
@@ -12,7 +11,7 @@ function HamburgerModal({ setMenuOpen, view, setView }) {
                 </button>
             </div>
 
-            {/* 🎯 MOBILE FEEDS TAB TOGGLE LINKS (Triggers view mutations natively) */}
+
             <div className="flex flex-col gap-y-6 text-center mt-12">
                 <button
                     onClick={() => {
@@ -20,8 +19,8 @@ function HamburgerModal({ setMenuOpen, view, setView }) {
                         setMenuOpen(false);
                     }}
                     className={`text-2xl font-bold transition-all p-3 rounded-xl cursor-pointer ${view === "home"
-                            ? "text-green-600 bg-green-50"
-                            : "text-gray-600 hover:text-black"
+                        ? "text-green-600 bg-green-50"
+                        : "text-gray-600 hover:text-black"
                         }`}
                     style={{ fontFamily: "'OpenRunde', sans-serif" }}
                 >
@@ -34,8 +33,8 @@ function HamburgerModal({ setMenuOpen, view, setView }) {
                         setMenuOpen(false);
                     }}
                     className={`text-2xl font-bold transition-all p-3 rounded-xl cursor-pointer ${view === "feed"
-                            ? "text-green-600 bg-green-50"
-                            : "text-gray-600 hover:text-black"
+                        ? "text-green-600 bg-green-50"
+                        : "text-gray-600 hover:text-black"
                         }`}
                     style={{ fontFamily: "'OpenRunde', sans-serif" }}
                 >

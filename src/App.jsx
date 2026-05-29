@@ -26,6 +26,9 @@ function App() {
     setView("feed");
   };
 
+  const deleteFindItem = (idToDelete) => {
+    setItems((prev) => prev.filter((item) => item.id !== idToDelete));
+  };
   return (
     <>
       <div style={{ fontFamily: "'OpenRunde', sans-serif" }}>
@@ -35,6 +38,7 @@ function App() {
           view={view}
           setView={setView}
           username={username}
+          onDeleteFind={deleteFindItem}
         />
         {modalOpen && (
           <FormModal

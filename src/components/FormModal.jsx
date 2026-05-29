@@ -12,14 +12,14 @@ function FormModal({ setModalOpen, onAddFind, username }) {
   const modalRef = useRef(null);
   const inputRef = useRef(null);
 
-  // Focus the first input on load
+
   useEffect(() => {
     if (inputRef.current) {
       inputRef.current.focus();
     }
   }, []);
 
-  // Click outside to close layout
+
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (modalRef.current && !modalRef.current.contains(event.target)) {
@@ -33,7 +33,7 @@ function FormModal({ setModalOpen, onAddFind, username }) {
     };
   }, [setModalOpen]);
 
-  // 🎯 ACCESSIBILITY ADDITION: Escape key tracker drops the modal instantly
+
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === "Escape") setModalOpen(false);
@@ -58,7 +58,7 @@ function FormModal({ setModalOpen, onAddFind, username }) {
 
   return (
     <>
-      {/* Dim backdrop layer wrapper */}
+
       <div
         className="fixed inset-0 flex items-center justify-center bg-black/50 p-4 z-50 animate-fade-in"
         role="dialog"
@@ -67,12 +67,11 @@ function FormModal({ setModalOpen, onAddFind, username }) {
       >
         <div
           ref={modalRef}
-          // 🎯 GOAL 1 MET: max-w-md makes the form box smaller on desktop. 
-          // max-h-[80vh] caps the box at 80% screen height so it NEVER runs off screen!
+
           className="w-full max-w-md max-h-[80vh] rounded-2xl bg-white shadow-2xl flex flex-col overflow-hidden border border-gray-100"
         >
 
-          {/* --- TIER 1: STICKY HEADER (Stays perfectly locked at top) --- */}
+
           <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100 bg-white">
             <h2
               id="modal-title"
@@ -90,8 +89,7 @@ function FormModal({ setModalOpen, onAddFind, username }) {
             </button>
           </div>
 
-          {/* --- TIER 2: INTERNAL SCROLL TRACK (Only fields scroll!) --- */}
-          {/* overflow-y-auto enables the scroll wheel inside this container box */}
+
           <form className="flex-1 overflow-y-auto px-6 py-4 space-y-4 text-left" onSubmit={handleSubmit}>
 
             {!username && (
@@ -165,7 +163,7 @@ function FormModal({ setModalOpen, onAddFind, username }) {
                 placeholder="Paste web link to image..."
               />
 
-              {/* Tightened micro-preview frame layout */}
+
               {imageUrl.trim() && (
                 <div className="w-full flex flex-col items-center gap-1 mt-2 bg-gray-50 p-2.5 rounded-xl border border-gray-100">
                   <span className="text-[10px] font-bold text-gray-400 tracking-wider uppercase">Preview Cover</span>
@@ -189,7 +187,7 @@ function FormModal({ setModalOpen, onAddFind, username }) {
               </label>
               <textarea
                 id="description"
-                // Balanced height row settings
+
                 rows="3"
                 value={formData.description}
                 onChange={(e) =>
@@ -200,7 +198,6 @@ function FormModal({ setModalOpen, onAddFind, username }) {
               ></textarea>
             </div>
 
-            {/* Hidden submit pipeline connection trigger for keyboard users */}
             <input type="submit" className="hidden" />
           </form>
 
