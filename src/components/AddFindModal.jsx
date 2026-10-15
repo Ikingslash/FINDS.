@@ -50,28 +50,57 @@ function AddFindModal({ setModalOpen, onAddFind, onUpdateFind, editingItem, user
     }
   };
 
-  // Handle Global Image Paste (Ctrl+V / Cmd+V)
+  // Universal Clipboard Item Processor
+  const processClipboardItems = (items) => {
+    if (!items) return false;
+    for (let i = 0; i < items.length; i++) {
+      if (items[i].type.indexOf("image") !== -1) {
+        const blob = items[i].getAsFile();
+        if (blob) {
+          const objectUrl = URL.createObjectURL(blob);
+          setImageUrl(objectUrl);
+          return true;
+        }
+      }
+    }
+    return false;
+  };
+
+  // Handle Global Image Paste (Ctrl+V / Mobile Clipboard Paste)
   useEffect(() => {
     const handlePaste = (e) => {
       const items = e.clipboardData?.items;
-      if (!items) return;
-
-      for (let i = 0; i < items.length; i++) {
-        if (items[i].type.indexOf("image") !== -1) {
-          const blob = items[i].getAsFile();
-          if (blob) {
-            const objectUrl = URL.createObjectURL(blob);
-            setImageUrl(objectUrl);
-            e.preventDefault();
-            break;
-          }
-        }
+      if (processClipboardItems(items)) {
+        e.preventDefault();
       }
     };
 
     window.addEventListener("paste", handlePaste);
     return () => window.removeEventListener("paste", handlePaste);
   }, []);
+
+  // Explicit Mobile Paste Button Handler using Clipboard API
+  const handleMobilePasteClick = async () => {
+    try {
+      if (navigator.clipboard && navigator.clipboard.read) {
+        const clipboardItems = await navigator.clipboard.read();
+        for (const clipboardItem of clipboardItems) {
+          const imageType = clipboardItem.types.find(type => type.startsWith("image/"));
+          if (imageType) {
+            const blob = await clipboardItem.getType(imageType);
+            const objectUrl = URL.createObjectURL(blob);
+            setImageUrl(objectUrl);
+            return;
+          }
+        }
+        alert("No image found on your clipboard. Please copy an image first!");
+      } else {
+        alert("Please long-press and paste your image directly into the modal.");
+      }
+    } catch (err) {
+      alert("Please long-press the upload box to paste your copied image.");
+    }
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -195,11 +224,21 @@ function AddFindModal({ setModalOpen, onAddFind, onUpdateFind, editingItem, user
               </select>
             </div>
 
-            {/* Image Upload / Paste Section */}
+            {/* Responsive Image Upload & Paste Section */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1.5">
-                Upload Image or Press <span className="text-green-600 font-bold">Ctrl+V</span> to Paste
-              </label>
+              <div className="flex items-center justify-between mb-1.5">
+                <label className="block text-sm font-medium text-gray-700">
+                  Upload Image
+                </label>
+                {/* Mobile paste button visible only on smaller screens */}
+                <button
+                  type="button"
+                  onClick={handleMobilePasteClick}
+                  className="md:hidden text-xs font-bold text-green-600 hover:text-green-700 bg-green-50 px-2 py-1 rounded-md transition-colors"
+                >
+                  📋 Paste Image
+                </button>
+              </div>
 
               <input
                 type="file"
@@ -227,10 +266,12 @@ function AddFindModal({ setModalOpen, onAddFind, onUpdateFind, editingItem, user
                 ) : (
                   <div className="text-center py-2">
                     <p className="text-sm font-semibold text-gray-700" style={{ fontFamily: "'OpenRunde', sans-serif" }}>
-                      Click to upload from device
+                      Tap to upload from device
                     </p>
+                    {/* Responsive text: Ctrl+V for desktop, tap/paste note for mobile */}
                     <p className="text-xs text-gray-400 mt-0.5">
-                      or press <span className="font-bold text-gray-600">Ctrl+V</span> to paste screenshot
+                      <span className="hidden md:inline">or press <span className="font-bold text-gray-600">Ctrl+V</span> to paste screenshot</span>
+                      <span className="md:hidden">or long-press to paste copied image</span>
                     </p>
                   </div>
                 )}

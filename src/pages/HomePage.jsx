@@ -70,8 +70,8 @@ function HomePage({ setModalOpen, items = [], view, setView, username, onDeleteF
 
             {/* 3. WHAT IS FINDS SECTION */}
             <section className="w-full max-w-6xl px-4 md:px-8 mt-16 md:mt-24 mb-20 flex flex-col items-center text-center mx-auto">
-              <h4
-                className="text-4xl md:text-5xl font-extrabold flex items-center justify-center gap-2 text-gray-900 text-center uppercase leading-none tracking-tight"
+              <h5
+                className="text-xl sm:text-2xl md:text-3xl font-extrabold flex items-center justify-center gap-2 text-gray-900 text-center uppercase leading-none"
                 style={{ fontFamily: "'OpenRunde', sans-serif" }}
               >
                 <span>What is</span>
@@ -84,14 +84,14 @@ function HomePage({ setModalOpen, items = [], view, setView, username, onDeleteF
                 >
                   FINDS
                 </span>
-              </h4>
+              </h5>
 
-              <h1
-                className="text-4xl sm:text-6xl md:text-7xl lg:text-6xl font-black text-gray-900 mt-4 max-w-4xl text-center uppercase"
+              <h2
+                className="text-xl sm:text-2xl md:text-5xl font-black text-gray-900 mt-4 max-w-4xl text-center uppercase"
                 style={{ fontFamily: "'OpenRunde', sans-serif" }}
               >
                 FINDS Is A Tool That Helps You Organize All The Things You Love In One Place
-              </h1>
+              </h2>
             </section>
 
             {/* 4. BUILT FOR EVERY CATEGORY SECTION (Full-Width Background + Standard Max-Width Container) */}
@@ -99,9 +99,9 @@ function HomePage({ setModalOpen, items = [], view, setView, username, onDeleteF
               <div className="w-full max-w-6xl px-4 md:px-8 flex flex-col items-center text-center mx-auto">
 
                 {/* Header */}
-                <div className="flex flex-col items-center mb-12 max-w-2xl">
-                  <h2
-                    className="text-4xl md:text-5xl font-extrabold flex items-center justify-center gap-2 text-gray-900 leading-none tracking-tight"
+                <div className="flex flex-col items-center mb-12 max-w-xl">
+                  <h5
+                    className="text-xl sm:text-2xl md:text-3xl font-extrabold flex items-center justify-center gap-2 text-gray-900 text-center uppercase leading-none"
                     style={{ fontFamily: "'OpenRunde', sans-serif" }}
                   >
                     <span>Built for every</span>
@@ -114,10 +114,10 @@ function HomePage({ setModalOpen, items = [], view, setView, username, onDeleteF
                     >
                       Category
                     </span>
-                  </h2>
+                  </h5>
 
                   <p
-                    className="text-base md:text-lg font-medium text-gray-700 mt-3 leading-snug"
+                    className="text-xs md:text-sm font-medium text-gray-700 mt-3 leading-snug"
                     style={{ fontFamily: "'OpenRunde', sans-serif" }}
                   >
                     Whether it’s the music you can’t stop playing, a trip that changed your perspective, there’s a place for it here....
@@ -132,17 +132,17 @@ function HomePage({ setModalOpen, items = [], view, setView, username, onDeleteF
 
                     {/* 1. Music */}
                     <div className="w-full bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow flex flex-col text-left">
-                      <div className="w-full h-56 overflow-hidden">
+                      <div className="w-full h-44 sm:h-48 overflow-hidden">
                         <img
                           src="/music.png"
                           alt="Music"
                           className="w-full h-full object-cover"
                         />
                       </div>
-                      <div className="p-6 flex flex-col gap-1.5 flex-1 justify-between">
+                      <div className="p-5 sm:p-6 flex flex-col gap-1.5 flex-1 justify-between">
                         <div>
                           <h3
-                            className="text-2xl font-black leading-none"
+                            className="text-xl sm:text-2xl font-black leading-none"
                             style={{
                               fontFamily: "'OpenRunde', sans-serif",
                               color: "#FFFFFF",
@@ -153,10 +153,10 @@ function HomePage({ setModalOpen, items = [], view, setView, username, onDeleteF
                             Music
                           </h3>
                           <p
-                            className="text-sm font-semibold text-gray-700 leading-tight mt-2"
+                            className="text-xs sm:text-sm font-semibold text-gray-700 leading-snug mt-2"
                             style={{ fontFamily: "'OpenRunde', sans-serif" }}
                           >
-                            From Metallica to Kanye West, share the sounds and artists that stay with you love
+                            From Metallica to Kanye West, share the sounds and artists that stay with you.
                           </p>
                         </div>
                       </div>
@@ -164,17 +164,17 @@ function HomePage({ setModalOpen, items = [], view, setView, username, onDeleteF
 
                     {/* 2. Movies & TV */}
                     <div className="w-full bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow flex flex-col text-left">
-                      <div className="w-full h-56 overflow-hidden">
+                      <div className="w-full h-44 sm:h-48 overflow-hidden">
                         <img
                           src="/movies.png"
                           alt="Movies & TV"
                           className="w-full h-full object-cover"
                         />
                       </div>
-                      <div className="p-6 flex flex-col gap-1.5 flex-1 justify-between">
+                      <div className="p-5 sm:p-6 flex flex-col gap-1.5 flex-1 justify-between">
                         <div>
                           <h3
-                            className="text-2xl font-black leading-none"
+                            className="text-xl sm:text-2xl font-black leading-none"
                             style={{
                               fontFamily: "'OpenRunde', sans-serif",
                               color: "#FFFFFF",
@@ -185,10 +185,10 @@ function HomePage({ setModalOpen, items = [], view, setView, username, onDeleteF
                             Movies &amp; TV
                           </h3>
                           <p
-                            className="text-sm font-semibold text-gray-700 leading-tight mt-2"
+                            className="text-xs sm:text-sm font-semibold text-gray-700 leading-snug mt-2"
                             style={{ fontFamily: "'OpenRunde', sans-serif" }}
                           >
-                            Share your thrillers, all-Time Favourites, and even your romcom heartthrob you're obsessed with.
+                            Share your thrillers, all-time favourites, and even your romcom heartthrob you're obsessed with.
                           </p>
                         </div>
                       </div>
@@ -196,17 +196,17 @@ function HomePage({ setModalOpen, items = [], view, setView, username, onDeleteF
 
                     {/* 3. Art */}
                     <div className="w-full bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow flex flex-col text-left">
-                      <div className="w-full h-56 overflow-hidden">
+                      <div className="w-full h-44 sm:h-48 overflow-hidden">
                         <img
                           src="/art.png"
                           alt="Art"
                           className="w-full h-full object-cover"
                         />
                       </div>
-                      <div className="p-6 flex flex-col gap-1.5 flex-1 justify-between">
+                      <div className="p-5 sm:p-6 flex flex-col gap-1.5 flex-1 justify-between">
                         <div>
                           <h3
-                            className="text-2xl font-black leading-none"
+                            className="text-xl sm:text-2xl font-black leading-none"
                             style={{
                               fontFamily: "'OpenRunde', sans-serif",
                               color: "#FFFFFF",
@@ -217,7 +217,7 @@ function HomePage({ setModalOpen, items = [], view, setView, username, onDeleteF
                             Art
                           </h3>
                           <p
-                            className="text-sm font-semibold text-gray-700 leading-tight mt-2"
+                            className="text-xs sm:text-sm font-semibold text-gray-700 leading-snug mt-2"
                             style={{ fontFamily: "'OpenRunde', sans-serif" }}
                           >
                             The artworks that stop you in your tracks, shift your perspective, and make you feel something you can't quite explain.
@@ -228,23 +228,23 @@ function HomePage({ setModalOpen, items = [], view, setView, username, onDeleteF
 
                   </div>
 
-                  {/* Bottom Row - 2 Centered Cards with EXACT same 1-column grid width as top cards */}
+                  {/* Bottom Row - 2 Centered Cards */}
                   <div className="w-full flex justify-center">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full md:w-[calc(66.666%+0.5rem)]">
 
                       {/* 4. Books */}
                       <div className="w-full bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow flex flex-col text-left">
-                        <div className="w-full h-56 overflow-hidden">
+                        <div className="w-full h-44 sm:h-48 overflow-hidden">
                           <img
                             src="/books.png"
                             alt="Books"
                             className="w-full h-full object-cover"
                           />
                         </div>
-                        <div className="p-6 flex flex-col gap-1.5 flex-1 justify-between">
+                        <div className="p-5 sm:p-6 flex flex-col gap-1.5 flex-1 justify-between">
                           <div>
                             <h3
-                              className="text-2xl font-black leading-none"
+                              className="text-xl sm:text-2xl font-black leading-none"
                               style={{
                                 fontFamily: "'OpenRunde', sans-serif",
                                 color: "#FFFFFF",
@@ -255,10 +255,10 @@ function HomePage({ setModalOpen, items = [], view, setView, username, onDeleteF
                               Books
                             </h3>
                             <p
-                              className="text-sm font-semibold text-gray-700 leading-tight mt-2"
+                              className="text-xs sm:text-sm font-semibold text-gray-700 leading-snug mt-2"
                               style={{ fontFamily: "'OpenRunde', sans-serif" }}
                             >
-                              From Metallica to Kanye West, share the sounds and artists that stay with you love
+                              The pages and stories that kept you up all night and completely changed how you see the world.
                             </p>
                           </div>
                         </div>
@@ -266,17 +266,17 @@ function HomePage({ setModalOpen, items = [], view, setView, username, onDeleteF
 
                       {/* 5. Others */}
                       <div className="w-full bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow flex flex-col text-left">
-                        <div className="w-full h-56 overflow-hidden">
+                        <div className="w-full h-44 sm:h-48 overflow-hidden">
                           <img
                             src="/others.png"
                             alt="Others"
                             className="w-full h-full object-cover"
                           />
                         </div>
-                        <div className="p-6 flex flex-col gap-1.5 flex-1 justify-between">
+                        <div className="p-5 sm:p-6 flex flex-col gap-1.5 flex-1 justify-between">
                           <div>
                             <h3
-                              className="text-2xl font-black leading-none"
+                              className="text-xl sm:text-2xl font-black leading-none"
                               style={{
                                 fontFamily: "'OpenRunde', sans-serif",
                                 color: "#FFFFFF",
@@ -287,7 +287,7 @@ function HomePage({ setModalOpen, items = [], view, setView, username, onDeleteF
                               Others
                             </h3>
                             <p
-                              className="text-sm font-semibold text-gray-700 leading-tight mt-2"
+                              className="text-xs sm:text-sm font-semibold text-gray-700 leading-snug mt-2"
                               style={{ fontFamily: "'OpenRunde', sans-serif" }}
                             >
                               For everything that defies a category, follows no rules, and deserves to be discovered anyway.
@@ -306,7 +306,7 @@ function HomePage({ setModalOpen, items = [], view, setView, username, onDeleteF
             {/* 5. HOW IT WORKS SECTION */}
             <section className="w-full max-w-6xl px-4 md:px-8 py-16 flex flex-col items-center text-center mx-auto">
               <h2
-                className="text-4xl md:text-5xl font-extrabold flex items-center justify-center gap-2 text-gray-900 leading-none tracking-tight"
+                className="text-2xl sm:text-3xl md:text-4xl font-extrabold flex items-center justify-center gap-2 text-gray-900 leading-none tracking-tight"
                 style={{ fontFamily: "'OpenRunde', sans-serif" }}
               >
                 <span>How it</span>
@@ -360,12 +360,19 @@ function HomePage({ setModalOpen, items = [], view, setView, username, onDeleteF
                 </button>
               </div>
 
-              {/* Three Phones Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 w-full max-w-3xl items-start justify-items-center mx-auto">
+              {/* Three Phones Grid with Pop-out Effect */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 w-full max-w-3xl items-start justify-items-center mx-auto">
 
                 {/* Step 1: Phone 1 */}
-                <div className="flex flex-col items-center max-w-[220px] w-full">
-                  <div className="w-full max-w-[230px] md:max-w-[250px] flex justify-center drop-shadow-lg transition-transform hover:-translate-y-1">
+                <div
+                  onClick={() => setActiveStep("add")}
+                  className={`flex flex-col items-center max-w-[220px] w-full cursor-pointer transition-all duration-300 transform ${activeStep === "add"
+                    ? "scale-105 md:-translate-y-3 opacity-100 z-10"
+                    : "scale-95 opacity-70 hover:opacity-90"
+                    }`}
+                >
+                  <div className={`w-full max-w-[230px] md:max-w-[250px] flex justify-center transition-all ${activeStep === "add" ? "drop-shadow-2xl" : "drop-shadow-sm"
+                    }`}>
                     <img
                       src="/phone-1.png"
                       alt="Add a Find"
@@ -386,13 +393,21 @@ function HomePage({ setModalOpen, items = [], view, setView, username, onDeleteF
                   <p
                     className="text-xs font-semibold mt-2 leading-snug text-center max-w-[200px]"
                     style={{ fontFamily: "'OpenRunde', sans-serif" }}
-                  >Hop onto Finds and hit “Get Started” to add your first Find!
+                  >
+                    Hop onto Finds and hit “Get Started” to add your first Find!
                   </p>
                 </div>
 
                 {/* Step 2: Phone 2 */}
-                <div className="flex flex-col items-center max-w-[220px] w-full">
-                  <div className="w-full max-w-[230px] md:max-w-[250px] flex justify-center drop-shadow-lg transition-transform hover:-translate-y-1">
+                <div
+                  onClick={() => setActiveStep("details")}
+                  className={`flex flex-col items-center max-w-[220px] w-full cursor-pointer transition-all duration-300 transform ${activeStep === "details"
+                    ? "scale-105 md:-translate-y-3 opacity-100 z-10"
+                    : "scale-95 opacity-70 hover:opacity-90"
+                    }`}
+                >
+                  <div className={`w-full max-w-[230px] md:max-w-[250px] flex justify-center transition-all ${activeStep === "details" ? "drop-shadow-2xl" : "drop-shadow-sm"
+                    }`}>
                     <img
                       src="/phone-2.png"
                       alt="Enter Your Details"
@@ -411,7 +426,7 @@ function HomePage({ setModalOpen, items = [], view, setView, username, onDeleteF
                     Enter Your Details
                   </h3>
                   <p
-                    className="text-xs font-semibold  mt-2 leading-snug text-center max-w-[200px]"
+                    className="text-xs font-semibold mt-2 leading-snug text-center max-w-[200px]"
                     style={{ fontFamily: "'OpenRunde', sans-serif" }}
                   >
                     Spill the details! Fill in your Find’s info and bring it to life.
@@ -419,8 +434,15 @@ function HomePage({ setModalOpen, items = [], view, setView, username, onDeleteF
                 </div>
 
                 {/* Step 3: Phone 3 */}
-                <div className="flex flex-col items-center max-w-[220px] w-full">
-                  <div className="w-full max-w-[230px] md:max-w-[250px] flex justify-center drop-shadow-lg transition-transform hover:-translate-y-1">
+                <div
+                  onClick={() => setActiveStep("wrld")}
+                  className={`flex flex-col items-center max-w-[220px] w-full cursor-pointer transition-all duration-300 transform ${activeStep === "wrld"
+                    ? "scale-105 md:-translate-y-3 opacity-100 z-10"
+                    : "scale-95 opacity-70 hover:opacity-90"
+                    }`}
+                >
+                  <div className={`w-full max-w-[230px] md:max-w-[250px] flex justify-center transition-all ${activeStep === "wrld" ? "drop-shadow-2xl" : "drop-shadow-sm"
+                    }`}>
                     <img
                       src="/phone-3.png"
                       alt="Create Your Wrld"
@@ -439,10 +461,11 @@ function HomePage({ setModalOpen, items = [], view, setView, username, onDeleteF
                     Create Your Wrld
                   </h3>
                   <p
-                    className="text-xs font-semibold  mt-2 leading-snug text-center max-w-[200px]"
+                    className="text-xs font-semibold mt-2 leading-snug text-center max-w-[200px]"
                     style={{ fontFamily: "'OpenRunde', sans-serif" }}
                   >
-                    Explore your wrld! Discover, collect, and share all your Finds. Your next fave discovery is out there!                   </p>
+                    Explore your wrld! Discover, collect, and share all your Finds. Your next fave discovery is out there!
+                  </p>
                 </div>
 
               </div>
